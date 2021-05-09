@@ -1,3 +1,31 @@
+// story section
+const header = document.querySelector("header");
+const house = document.querySelector("section.house");
+
+const story = gsap.timeline();
+
+story
+  .set(house, { opacity: 0 })
+  .set(header, { opacity: 0 })
+  .set("section.scene img", {
+    x: function (idx) {
+      return 350 + idx * 70 + "vh";
+    },
+    opacity: 0,
+  })
+  .to(header, { opacity: 1, duration: 2 })
+  .to(header, { opacity: 0, delay: 2 })
+  .addLabel("startScroll")
+  .to("section.scene img", { opacity: 1 }, "startScroll")
+  .to(
+    "section.scene img",
+    { x: "0vh", duration: 12, ease: "linear" },
+    "startScroll"
+  )
+  .addLabel("endscene")
+  .to("section.scene img", { opacity: 0 }, "endscene")
+  .to(house, { opacity: 1 }, "endscene");
+
 // Opening Scene
 const eyesTl = gsap.timeline({ repeat: -1 });
 

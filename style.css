@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap");
 
-@keyframes flicker {
+@keyframes fadeIn {
   0% {
+    opacity: 0;
   }
   100% {
+    opacity: 1;
   }
 }
 
@@ -24,8 +26,21 @@ body {
   /* height: 8000px; */
 }
 
+main {
+  animation: fadeIn 1s 1s both;
+}
+
+header,
+section {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
 header {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -41,6 +56,18 @@ h1 {
   font-size: 32px;
   margin: 32px 0 0 0;
   text-align: center;
+}
+
+section.scene {
+}
+
+section.scene img {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 700vh;
+  max-width: none;
 }
 
 section.house {
@@ -64,10 +91,6 @@ section.house svg g#scene {
 
 section.house svg:hover g#scene {
   opacity: 0.4;
-}
-
-section.house svg a rect {
-  fill: white;
 }
 
 div.label {
