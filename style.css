@@ -23,7 +23,7 @@ body {
   background-color: #140e3c;
   color: #ffffff;
 
-  /* height: 8000px; */
+  height: 8000px;
 }
 
 main {
@@ -46,6 +46,7 @@ header {
   width: 100%;
   min-height: 100vh;
   flex-direction: column;
+  padding: 32px;
 }
 
 header svg {
@@ -77,6 +78,7 @@ section.house {
   min-height: 100vh;
   width: 100%;
   flex-direction: column;
+  padding: 32px;
 }
 
 section.house svg {

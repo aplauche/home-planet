@@ -4,16 +4,17 @@ const house = document.querySelector("section.house");
 
 const story = gsap.timeline();
 
+gsap.set(house, { opacity: 0 });
+
+gsap.set("section.scene img", {
+  x: function (idx) {
+    return 350 + idx * 70 + "vh";
+  },
+  opacity: 0,
+});
+
 story
-  .set(house, { opacity: 0 })
-  .set(header, { opacity: 0 })
-  .set("section.scene img", {
-    x: function (idx) {
-      return 350 + idx * 70 + "vh";
-    },
-    opacity: 0,
-  })
-  .to(header, { opacity: 1, duration: 2 })
+
   .to(header, { opacity: 0, delay: 2 })
   .addLabel("startScroll")
   .to("section.scene img", { opacity: 1 }, "startScroll")
@@ -25,6 +26,20 @@ story
   .addLabel("endscene")
   .to("section.scene img", { opacity: 0 }, "endscene")
   .to(house, { opacity: 1 }, "endscene");
+
+story.pause();
+
+let update;
+
+window.addEventListener("scroll", function () {
+  const pixels = window.pageYOffset + window.innerHeight;
+  const playheadTime = pixels / 8000;
+
+  cancelAnimationFrame(update);
+  update = requestAnimationFrame(function () {
+    story.seek(story.duration() * playheadTime);
+  });
+});
 
 // Opening Scene
 const eyesTl = gsap.timeline({ repeat: -1 });
